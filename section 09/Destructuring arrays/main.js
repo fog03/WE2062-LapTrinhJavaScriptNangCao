@@ -34,44 +34,49 @@ const restaurant = {
         addres }) {
         console.log(`Oder received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}
         will be delivered to ${addres} and ${time}`);
+    },
+
+    orderPasta: function (ing1, ing2, ing3) {
+        console.log(`Here is your declicious pasta with
+        ${ing1}, ${ing2},${ing3}`);
     }
 };
 
-restaurant.oderDelivery({
-    time: '22:30',
-    addres: 'Via del sole, 21',
-    mainIndex: 1,
-    starterIndex: 2,
-});
-restaurant.oderDelivery({
-    addres: 'Via del sole, 21',
-    starterIndex: 1,
-})
-restaurant.oder()
-const { name, categories, openingHours } = restaurant;
-console.log(name, categories, openingHours);
+// restaurant.oderDelivery({
+//     time: '22:30',
+//     addres: 'Via del sole, 21',
+//     mainIndex: 1,
+//     starterIndex: 2,
+// });
+// restaurant.oderDelivery({
+//     addres: 'Via del sole, 21',
+//     starterIndex: 1,
+// })
+// restaurant.oder()
+// const { name, categories, openingHours } = restaurant;
+// console.log(name, categories, openingHours);
 
 
-const {
-    name: restaurantName,
-    openingHours: hours,
-    categories: tags
-} = restaurant;
-console.log(restaurantName, hours, tags);
+// const {
+//     name: restaurantName,
+//     openingHours: hours,
+//     categories: tags
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
 
-//default values
-const { menu = [], starterMenu: starter = [] } = restaurant;
-console.log(menu, starter);
+// //default values
+// const { menu = [], starterMenu: starter = [] } = restaurant;
+// console.log(menu, starter);
 
-//Mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 27, b: 4, c: 14 };
-({ a, b } = obj)
-console.log(a, b);
+// //Mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = { a: 27, b: 4, c: 14 };
+// ({ a, b } = obj)
+// console.log(a, b);
 
-const { fri: { open: o, close: c } } = openingHours;
-console.log(o, c);
+// const { fri: { open: o, close: c } } = openingHours;
+// console.log(o, c);
 // ----------------------------------------------------------------------------
 // Distructuring arrays
 //Distructuring is  an ESX feature and it's basically a way of unpacking values from
@@ -107,3 +112,56 @@ console.log(o, c);
 
 // const [p=1,q=1,r=1]=[8,9];
 // console.log(p,q,r);
+const arr = [7, 8, 9];
+const badNewarr = [1, 2, arr[0], arr[2]];
+console.log(badNewarr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+
+console.log(...newArr);
+console.log(1, 2, 7, 8, 9);
+
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+
+//copy array
+
+const mainMenucopy = [...restaurant.mainMenu];
+
+// join 2 arrays
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+
+//Iterables: arrays, strings, maps, sets. NOT objects
+
+const str = "Jonas";
+const letter = [...str, '', 'S.'];
+console.log(letter);
+console.log('j', 'o');
+// console.log(`${...str} Schmedmann`);
+// real-world example
+const ingredients = [
+// prompt("'Let\'s make pasta! Ingredient 1?"),
+// prompt('Ingredient 2'),
+// prompt('Ingredient 3')
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0],ingredients[1],ingredients[2]);
+restaurant.orderPasta(...ingredients);
+
+
+// Objects 
+const newRestaurant = {fouder:1998,...restaurant, fouder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = "Ristorante Rome";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
